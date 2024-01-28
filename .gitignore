@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 server/venv
+server/venv/Scripts
 Lib
 
 # Editor directories and files
