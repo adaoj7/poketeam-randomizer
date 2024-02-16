@@ -1,30 +1,6 @@
-# React + TypeScript + Vite
+This project is for me to practice with FastAPI with the integration with React. 
+I would like to be able to help myself build teams of pokemon with the ability to sort through and build a team of 6 with 3 being physical and 3 being special with a good mix of typings.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This might be somewhat difficult as it will be challenging to sort by those stats, but it should be cool to see what kind of data I will have to sort through
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+I should be able to display images and some moveset ideas as a dropdown to be able to know for the teams that I am building. Especially not needing to go through the sites one by one
