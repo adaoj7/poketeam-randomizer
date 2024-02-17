@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
 import Stats from "./Stats.tsx"
@@ -14,10 +14,23 @@ function App() {
     }
   }
 
-  const [count, setCount] = useState(0)
+  const [searchCount, setSearchCount] = useState(0)
   const [name, setName] = useState('')
   const [pokemon, setPokemon] = useState<PokemonData | null>(null)
   const [error, setError] = useState('')
+
+  useEffect(() => {
+    const response : any = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/getCount`)
+        setSearchCount(response.data)
+      } catch (err:any) {
+        console.log(err)
+      }
+      
+    }
+    response()
+  },[])
 
   const handleInputChange = (e: any) => {
     setName(e.target.value)
@@ -26,7 +39,7 @@ function App() {
   const searchPokemon = async () => {
     try {
       console.log(pokemon)
-      setCount(count + 1)
+      setSearchCount(searchCount + 1)
       const response = await axios.get(`http://localhost:8000/api/getPokemon/${name}`)
       if (!response) {
         throw new Error(`Failed to fetch: ${response}`)
@@ -39,6 +52,13 @@ function App() {
     } catch (err: any) {
       setError(err.message)
       setPokemon(null)
+    }
+    try {
+      await axios.put(`http://localhost:8000/api/update/${searchCount}`)
+      const newCount = searchCount + 1
+      setSearchCount(newCount)
+    } catch (err: any) {
+      console.log(err)
     }
   }
   return (
@@ -61,7 +81,7 @@ function App() {
           )}
           {pokemon ? <Stats pokemon={pokemon}/> : <></>}
       </div>
-          <div>Pokemon generated: {count}</div>
+          <div>Pokemon generated: {searchCount}</div>
           <br />
       <a href="https://pokeapi.co/">PokeAPI</a>
     </>
