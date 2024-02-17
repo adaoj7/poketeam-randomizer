@@ -1,6 +1,4 @@
-﻿import React from 'react'
-
-const Stats = (pokemon: any) => {
+﻿const Stats = (pokemon: any) => {
 
     interface Stats {
         base_stat: number

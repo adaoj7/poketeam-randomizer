@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
 import Stats from "./Stats.tsx"
+import Moveset from './Moveset.tsx'
 
 function App() {
 
@@ -80,6 +81,7 @@ function App() {
           
           )}
           {pokemon ? <Stats pokemon={pokemon}/> : <></>}
+          {pokemon ? <Moveset pokemon={pokemon}/> : <></>}
       </div>
           <div>Pokemon generated: {searchCount}</div>
           <br />
