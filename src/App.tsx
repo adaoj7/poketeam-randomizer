@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import axios from 'axios'
+import Stats from "./Stats.tsx"
 
 function App() {
 
@@ -20,7 +21,6 @@ function App() {
 
   const handleInputChange = (e: any) => {
     setName(e.target.value)
-    console.log(name)
   }
   
   const searchPokemon = async () => {
@@ -32,9 +32,9 @@ function App() {
         throw new Error(`Failed to fetch: ${response}`)
       }
       const data = await response.data
-      console.log(response)
       //@ts-ignore
       setPokemon(data);
+      console.log(pokemon)
       setError('')
     } catch (err: any) {
       setError(err.message)
@@ -57,7 +57,9 @@ function App() {
             <img src={pokemon.sprites.front_default} alt="" />
             <img src={pokemon.sprites.front_shiny} alt="" />
           </div>
-        )}
+          
+          )}
+          {pokemon ? <Stats pokemon={pokemon}/> : <></>}
       </div>
           <div>Pokemon generated: {count}</div>
           <br />
