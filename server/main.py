@@ -1,8 +1,7 @@
-﻿from fastapi import FastAPI
+﻿from fastapi import FastAPI, HTTPException
 import pokebase as pb
 from fastapi.middleware.cors import CORSMiddleware
-import sys
-
+import httpx
 
 
 
@@ -21,12 +20,14 @@ app.add_middleware(
 async def read_root():
     return {"Hello": "from FastAPI"}
 
-@app.get("/pokemon/{name}")
+@app.get("/api/getPokemon/{name}")
 async def get_pokemon(name: str):
-    try: 
-        pokemon = pb.pokemon(name.lower())
-        print(pokemon)
-        return {'data': pokemon}
-    except Exception as e:
-        return {'error': str(e)}
+    async with httpx.AsyncClient() as client:
+        response = await client.get(f"https://pokeapi.co/api/v2/pokemon/{name}")
+        print(response)
+        
+        if response.status_code == 200:
+            return response.json()
+        else:
+            raise HTTPException(status_code=404, detail=f"Pokemon {name} not found")
 

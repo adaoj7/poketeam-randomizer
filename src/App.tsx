@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import axios from 'axios'
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     id: number
     sprites: {
       front_default: string;
+      front_shiny: string;
     }
   }
 
@@ -25,11 +27,12 @@ function App() {
     try {
       console.log(pokemon)
       setCount(count + 1)
-      const response = await fetch(`http://localhost:8000/getPokemon${name}`)
-      if (!response.ok) {
-        throw new Error(`Failed to fetch: ${response.status}`)
+      const response = await axios.get(`http://localhost:8000/api/getPokemon/${name}`)
+      if (!response) {
+        throw new Error(`Failed to fetch: ${response}`)
       }
-      const data = await response.json()
+      const data = await response.data
+      console.log(response)
       //@ts-ignore
       setPokemon(data);
       setError('')
@@ -51,7 +54,8 @@ function App() {
         {error && <p>Error: {error}</p>}
         {pokemon && (
           <div>
-            <h2>{pokemon.name}</h2>
+            <img src={pokemon.sprites.front_default} alt="" />
+            <img src={pokemon.sprites.front_shiny} alt="" />
           </div>
         )}
       </div>
