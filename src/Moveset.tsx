@@ -7,18 +7,24 @@
         version_group_details: any
     }
 
-    const pokemonMoves = pokemon.pokemon.moves.map((ele:Moves ,i:number) => {
+    const pokemonMoves = pokemon.pokemon.moves.map((ele:any ,i:number) => {
+
+
 
         const newArr = ele.version_group_details.filter((ele:any, i:number) => {
            return ele.version_group.name === 'emerald'
         })
-        return <>
-        {console.log(newArr)}
-        </>
+        
+        if (newArr.length > 0) {
+            return <div key={i}>Move: {ele.move.name}, Level Learned: {newArr[0].level_learned_at}
+            </div>
+        }
     })
+
+
   return (
     <>{pokemonMoves}</>
   )
-}
 
+  }
 export default Moveset
