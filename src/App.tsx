@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import axios from 'axios'
 import Stats from "./Stats.tsx"
 import Moveset from './Moveset.tsx'
@@ -70,7 +69,7 @@ function App() {
         value={name}
         onChange={handleInputChange}
         placeholder='Enter Pokemon Name' />
-        <button onClick={searchPokemon}>Search</button>
+        <button className='btn' onClick={searchPokemon}>Search</button>
         <br />
         {error && <p>Error: {error}</p>}
         {pokemon && (
