@@ -8,7 +8,7 @@
     }
 
     const pokemonStats = pokemon.pokemon.stats.map((ele:Stats ,i:number) => {
-        return <div key={i}>{ele.stat.name}: {ele.base_stat}</div>
+        return <div className="flex justify-center" key={i}>{ele.stat.name}: {ele.base_stat}</div>
     })
   return (
     <>

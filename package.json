@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start:api": "uvicorn server.main:app --reload",
+    "start:api": "uvicorn server.main:app --reload --log-level debug",
     "start:web": "vite",
     "start": "concurrently \"npm run start:api\" \"npm run start:web\"",
     "build": "tsc && vite build",

@@ -2,6 +2,7 @@
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import httpx
+import pprint
 
 
 
@@ -26,9 +27,9 @@ async def read_root():
 async def get_pokemon(name: str):
     async with httpx.AsyncClient() as client:
         response = await client.get(f"https://pokeapi.co/api/v2/pokemon/{name.lower()}")
-        print(response)
         
         if response.status_code == 200:
+            pprint.pprint(response.json())
             return response.json()
         else:
             raise HTTPException(status_code=404, detail=f"Pokemon {name} not found")
