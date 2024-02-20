@@ -6,3 +6,6 @@ This might be somewhat difficult as it will be challenging to sort by those stat
 I should be able to display images and some moveset ideas as a dropdown to be able to know for the teams that I am building. Especially not needing to go through the sites one by one
 
 So far I have started by displaying stats and will be moving on to movesets next
+
+
+I realized this morning that I might have to model the data that I am wanting in order to display the correct stats and moves. This will be a lot more work, but it will let me harness sequel a bit more to be able to select pokemon and data based on the games. From what I can tell the data is not super well organized so I think modeling the data myself might be a bit better for accessing and using it.
